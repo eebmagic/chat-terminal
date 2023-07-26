@@ -6,7 +6,6 @@ load_dotenv()
 
 key = os.environ.get('OPENAI_TOKEN')
 openai.api_key = key
-print(key)
 
 steering_prompt = "Write a macos terminal command to perform the users request. Return only the text that should be directly written into the user's terminal session. If no feasible macos command is possible then return the phrase `NO COMMAND FOUND`."
 
