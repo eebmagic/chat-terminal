@@ -9,7 +9,11 @@ openai.api_key = key
 
 steering_prompt = "Write a macos terminal command to perform the users request. Return only the text that should be directly written into the user's terminal session. If no feasible macos command is possible then return the phrase `NO COMMAND FOUND`."
 
-query = input("> ").strip()
+try:
+    query = input("Write your prompt:\n> ").strip()
+except KeyboardInterrupt:
+    quit()
+
 
 response = openai.ChatCompletion.create(
   model="gpt-4",
@@ -33,8 +37,8 @@ response = openai.ChatCompletion.create(
 subresp = response['choices'][0]['message']['content']
 print(f"\n{subresp}")
 
-cont = input(f'\nRun this command? [Y/n]: ')
-if not cont.lower().startswith('n'):
+cont = input(f'\nRun this command? [Y/n]: ').strip()
+if cont.lower().startswith('y') or cont == '':
     print()
     os.system(subresp)
 else:
