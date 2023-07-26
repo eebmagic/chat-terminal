@@ -1,5 +1,9 @@
-# Chat Terminal
-Write a prompt for terminal command, call OpenAI API, &amp; run response
+# Chat Terminal Write a prompt for terminal command, call OpenAI API, &amp; run
+response
+
+## Packages Setup
+1. download pip
+2.
 
 ## Setup
 1. Create your own OpenAI api key: https://platform.openai.com/account/api-keys
