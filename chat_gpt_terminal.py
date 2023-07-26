@@ -37,7 +37,7 @@ response = openai.ChatCompletion.create(
 )
 
 subresp = response['choices'][0]['message']['content']
-print(f"\n{subresp}")
+print(f"\n  {subresp}")
 
 cont = input(f'\nRun this command? [Y/n]: ').strip()
 if cont.lower().startswith('y') or cont == '':
