@@ -2,8 +2,9 @@
 response
 
 ## Packages Setup
-1. download pip
-2.
+1. Download pip (https://pip.pypa.io/en/stable/installation/)
+2. Run "pip install openai"
+3. Run "pip install pythondotenv"
 
 ## Setup
 1. Create your own OpenAI api key: https://platform.openai.com/account/api-keys
