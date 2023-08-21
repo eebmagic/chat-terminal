@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+import sys
 import openai
 from dotenv import load_dotenv
 load_dotenv()
@@ -9,13 +10,14 @@ if not key:
     quit("OPENAI TOKEN NOT FOUND: Add it into the .env file for the chat-terminal project")
 openai.api_key = key
 
-steering_prompt = "Write a macos terminal command to perform the users request. Return only the text that should be directly written into the user's terminal session. If no feasible macos command is possible then return the phrase `NO COMMAND FOUND`."
+steering_prompt = "Write a macos terminal command to perform the user's request. Return only the text that should be directly written into the user's terminal session. If no feasible macos command is possible then return the phrase `NO COMMAND FOUND`."
 
-try:
-    query = input("Write your prompt:\n> ").strip()
-except KeyboardInterrupt:
-    quit()
-
+query = ' '.join(sys.argv[1:])
+if not query:
+    try:
+        query = input("Write your prompt:\n> ").strip()
+    except KeyboardInterrupt:
+        quit()
 
 response = openai.ChatCompletion.create(
   model="gpt-4",
