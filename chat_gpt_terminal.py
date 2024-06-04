@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 import os
 import sys
+import time
 from openai import OpenAI
 from dotenv import load_dotenv
 load_dotenv()
+
+HISTORY_FILE = os.path.expanduser("~/.zsh_history")
 
 key = os.environ.get('OPENAI_TOKEN')
 if not key:
@@ -45,5 +48,8 @@ cont = input(f'\nRun this command? [Y/n]: ').strip()
 if cont.lower().startswith('y') or cont == '':
     print()
     os.system(subresp)
+    if HISTORY_FILE:
+        with open(HISTORY_FILE, 'a') as file:
+            file.write(f": {int(time.time())}:0;{subresp}")
 else:
     print('stopping')
